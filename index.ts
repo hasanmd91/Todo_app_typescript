@@ -7,7 +7,7 @@ const add = document.querySelector<HTMLButtonElement>("#add")!;
 
 interface Todo {
   title: string;
-  date: string;
+  date: Date | string;
   text: string;
 }
 
@@ -33,6 +33,7 @@ const createTodo = () => {
 };
 
 // form submitting & data store in local storage
+
 form.addEventListener("submit", (e: Event) => {
   e.preventDefault();
   data.push({
@@ -48,17 +49,16 @@ form.addEventListener("submit", (e: Event) => {
 });
 
 //delete function
-const deleteTask = (e: HTMLElement) => {
+const deleteTask = (e: HTMLElement): void => {
   e.parentElement?.parentElement?.remove();
   data.splice(Number(e.parentElement?.parentElement?.id), 1);
   localStorage.setItem("data", JSON.stringify(data));
 };
 
 //edit Task
-const editTask = (e: HTMLElement) => {
+const editTask = (e: HTMLElement): void => {
   e.parentElement?.parentElement?.remove();
   const selectedItem = e.parentElement?.parentElement;
-
   titleInput.value = selectedItem?.children[0].innerHTML || "";
   dateInput.value = selectedItem?.children[1].innerHTML || "";
   textInput.value = selectedItem?.children[2].innerHTML || "";
@@ -72,7 +72,7 @@ const editTask = (e: HTMLElement) => {
 })();
 
 // clear form
-const clearForm = () => {
+const clearForm = (): void => {
   titleInput.value = "";
   dateInput.value = "";
   textInput.value = "";
