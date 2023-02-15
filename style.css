@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+:root {
+  --border: rgb(127, 147, 202);
+  --todobackground: rgb(193, 205, 237);
+  --appbackgorund: rgb(221, 221, 237);
+  --buttonbackground: rgb(195, 196, 226);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0 50px;
+  overflow: hidden;
+  background-color: rgb(246, 244, 241);
+  background: linear-gradient(-45deg, rgb(32, 35, 47), rgb(207, 210, 227));
+  animation: gradient 10s ease infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.todoApp {
+  margin: 50px auto;
+  max-width: 500px;
+  height: 80vh;
+
+  border: 3px solid var(--border);
+  border-radius: 5px;
+  padding: 15px;
+  overflow-y: scroll;
+  background-color: var(--appbackgorund);
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.todoApp::-webkit-scrollbar {
+  width: 0;
+}
+
+#addNew {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--todobackground);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.fa-solid {
+  background-color: var(--buttonbackground);
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#tasks {
+  display: grid;
+  gap: 14px;
+}
+#tasks > div {
+  background-color: var(--todobackground);
+  border: 2px solid var(--border);
+  border-radius: 5px;
+  padding: 15px;
+  display: grid;
+  gap: 10px;
+}
+
+.options {
+  justify-self: center;
+  display: flex;
+  gap: 15px;
+}
+
+.options i {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  .todoApp {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .todoApp {
+    width: 300px;
+  }
+}
